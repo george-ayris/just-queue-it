@@ -2,15 +2,15 @@ define(['durandal/system'], function (system) {
 	var vm ={};
 
 	vm.activate = function() {
-		system.log('** activate about');
+		system.log("**");
 	};
 
 	vm.attached = function() {
-		system.log('** attached about');
+		system.log('** attached catalog');
 	};
 
-	vm.canActivate = function() {
-		return {redirect: '#simple'};
+	vm.canDeactivate = function() {
+		return true;
 	};
 
 	return vm;
