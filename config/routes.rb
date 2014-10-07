@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'application#index'
 
+  # Routing for music commands
+  post 'play' => 'music#play'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

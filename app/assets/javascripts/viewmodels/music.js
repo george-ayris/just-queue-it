@@ -1,4 +1,4 @@
-define(['durandal/system'], function (system) {
+define(['durandal/system', 'durandal/app', '../models/music-handler'], function (system, app, music) {
 	var vm ={};
 
 	vm.activate = function() {
@@ -12,6 +12,11 @@ define(['durandal/system'], function (system) {
 	vm.canDeactivate = function() {
 		return true;
 	};
+
+	vm.playButtonClicked = function() {
+		system.log('play clicked');
+		music.play();
+	}
 
 	return vm;
 });
