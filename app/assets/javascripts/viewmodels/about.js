@@ -9,9 +9,5 @@ define(['durandal/system'], function (system) {
 		system.log('** attached about');
 	};
 
-	vm.canActivate = function() {
-		return {redirect: '#simple'};
-	};
-
 	return vm;
 });
