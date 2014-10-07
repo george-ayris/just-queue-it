@@ -1,0 +1,7 @@
+{
+  "name": "Just-Queue-It",
+  "dependencies": {
+    "bootstrap": "latest",
+    "durandal": "latest"
+  }
+}
