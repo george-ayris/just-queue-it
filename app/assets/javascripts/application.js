@@ -1,17 +1,42 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-//= require turbolinks
-//= require jquery
-//= require bootstrap
-//= require requirejs
-//= require_tree .
+var bower_path = 'lib/'
+requirejs.config({
+    paths: {
+        'text': bower_path + 'requirejs-text/text',
+        'durandal': bower_path + 'durandal/js',
+        'plugins' : bower_path + 'durandal/js/plugins',
+        'transitions' : bower_path + 'durandal/js/transitions',
+        'knockout': bower_path + 'knockout.js/knockout',
+        'bootstrap': bower_path + 'bootstrap/js/',
+        'jquery': bower_path + 'jquery/jquery'
+    },
+    shim: {
+        'bootstrap': {
+            deps: ['jquery'],
+            exports: 'jQuery'
+       }
+    }
+});
+
+define(['durandal/system', 'durandal/app', 'durandal/viewLocator', 'jquery'],  function (system, app, viewLocator, $) {
+    //>>excludeStart("build", true);
+    system.debug(true);
+    //>>excludeEnd("build");
+
+    app.title = 'Just Queue It';
+
+    app.configurePlugins({
+        router:true,
+        dialog: true,
+        widget: true
+    });
+
+    app.start().then(function() {
+        //Replace 'viewmodels' in the moduleId with 'views' to locate the view.
+        //Look for partial views in a 'views' folder in the root.
+        viewLocator.useConvention();
+
+        //Show the app by setting the root view model for our application with a transition.
+        app.setRoot('viewmodels/shell', 'entrance');
+    });
+
+});
